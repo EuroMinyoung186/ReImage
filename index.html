@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries">
+  <meta name="keywords" content="Synthesized Audiovisual Forgeries, Authentic Audio Recovery, Tamper Localization in Audio">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.png"> 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+  <!-- KaTex -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$$", right: "$$", display: true},
+          {left: "$", right: "$", display: false}
+        ]
+      });
+    });
+  </script>
+  <!-- KaTex -->
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</h1>
+          <div class="is-size-3 publication-authors">
+            <img src="./static/images/Interspeech_logo2.jpg" alt="Interspeech Logo" style="height: 100px; vertical-align: middle;">
+            <b>Interspeech 2025</b>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="https://github.com/EuroMinyoung186">Minyoung Kim</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="">Sehwan Park</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://phseo.github.io/">Paul Hongsuck Seo</a><sup>1</sup>,</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Korea University,</span>
+            <span class="author-block"><sup>2</sup>New York University</span>
+          </div>
+          <div style="display: flex; justify-content: center; align-items: center;">
+            <a href="https://www.korea.edu/sites/en/index.do" target="_blank">
+              <img src="./static/images/korea_university.png" alt="korea" style="height: 36px;">&nbsp;&nbsp;&nbsp;
+            </a>
+            <a href="https://miil.korea.ac.kr/" target="_blank">
+              <img src="./static/images/MIIL_full_logo.svg" alt="miil" style="height: 36px;">&nbsp;&nbsp;&nbsp;
+            </a>
+            <a href="https://www.nyu.edu/" target="_blank">
+              <img src="./static/images/newyork.png" alt="newyork" style="height: 36px;">&nbsp;&nbsp;&nbsp;
+            </a>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2507.12723"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2502.06139"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/EuroMinyoung186/CMW_SAVF/tree/main"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in voice cloning and lip synchronization models have enabled Synthesized Audiovisual Forgeries (SAVFs), where both audio and visuals are manipulated to mimic a target speaker. 
+            This significantly increases the risk of misinformation by making fake content seem real. 
+            To address this issue, existing methods detect or localize manipulations but cannot recover the authentic audio that conveys the semantic content of the message.
+            This limitation reduces their effectiveness in combating audiovisual misinformation. 
+            In this work, we introduce the task of Authentic Audio Recovery (AAR) and Tamper Localization in Audio (TLA) from SAVFs and propose a cross-modal watermarking framework to embed authentic audio into visuals before manipulation. 
+            This enables AAR, TLA, and a robust defense against misinformation.
+            Extensive experiments demonstrate the strong performance of our method in AAR and TLA against various manipulations, including voice cloning and lip synchronization.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <img src="./static/images/arch_interspeech.png" class="center"/>
+        <div class="content has-text-justified">
+          <p>
+            <b>Overview of Our Models</b>
+            The framework comprises three main processes: cross-modal watermarking (CMW), authentic audio recovery, and tamper localization. 
+            In the CMW process, CMW embed the authentic audio within a visual frame. 
+            For authentic audio recovery, noise estimators predict the transformed audio output from watermarked visual frame, enabling the inverse CMW to recover the authentic audio embedded in the visual frame.
+            Finally, in tamper localization, we compute feature maps for both the recovered and tampered audio to generate a score that identifies the tampered regions.
+          </p>
+          <p>
+            In this work, we aim to recover authentic audio and localize temporally tampered regions in Synthesized Audiovisual Forgeries (SAVFs), which are generated via voice cloning and lip synchronization. 
+            Specifically, our objectives are: (1) to reconstruct the original audio from tampered AVS inputs and (2) to detect time intervals ${(t^i_\mathrm{start}, t^i_\mathrm{end})}_{i=1}^N$ corresponding to manipulated audio segments.
+            To address the tasks of AAR and TLA, we propose a watermarking-based approach as follows: 
+            Given an original AVS $X_\text{org} = (I_\text{org}, A_\text{org})$, we imperceptibly embed the authentic audio $A_\text{org}$ into the visual frame $I_\text{org}$ to produce a watermarked AVS $X_\text{wm} = (I_\text{wm}, A_\text{org})$.
+            After potential tampering (e.g., lip synchronization or voice cloning), we obtain $X_\text{tam} = (I_\text{tam}, A_\text{tam})$. 
+            For Authentic Audio Recovery (AAR) and Tamper Localization in Audio (TLA), our method reconstructs $A_\text{rec}$ from $I_\text{tam}$ and compares it with $A_\text{tam}$ to identify manipulated regions.
+          </p>
+<!--           <img src="./static/images/pseudoGT.png" class="center"/> -->
+          <p>
+            For the watermarking process, we employ Cross-Modal Watermarking (CMW), which consists of a series of Invertible Neural Network (INN) blocks. 
+            INNs have the distinctive property of reversibility, allowing the original inputs to be exactly recovered from their outputs. 
+            Specifically, given an original visual frame and its corresponding audio, CMW embeds the audio into the visual domain by transforming both modalities through a stack of INN blocks. 
+            This process produces a watermarked visual that imperceptibly carries the audio information. 
+            Crucially, the reversible nature of INNs enables us to later recover the embedded audio from the (potentially tampered) visual input, thereby supporting Authentic Audio Recovery (AAR).
+            After performing AAR, we localize tampered regions by comparing the recovered and tampered audio in a semantic feature space. 
+            Instead of directly comparing raw audio signals, which are sensitive to noise and recovery artifacts, we extract high-level audio features and compute cosine similarity at each timestep. 
+            This feature-level comparison enables robust and precise tamper localization by focusing on semantic differences rather than low-level signal variations.
+<!--             Furthermore, relevance alone does not guarantee that a document contains sufficient information to answer the question, as it may still lack consistency with the correct answer. -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Results</h2>
+        <!--<embed src="./static/pdf/result1.pdf" type="./static/images/result1.pdf" width="100%" height="600px"/> -->
+        <div style="text-align: center;">
+          <img src="./static/images/audiolocalization.png" class="center" />
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            <b>Comparison of Different Audio Tamper Localization Methods on the HDTF Dataset.</b>
+            Tampering simulation uses two methods: AS-inserting a different audio segment into the parts of original audio and VS-modifying parts of the audio with voice generated by voice cloning model. 
+            Localization metrics include IoU, AP, and AUC, while SNR and PESQ measure recovered audio quality, respectively.
+            SSIM and PSNR measure video quality. WM and CM refer to watermarking and cross-modal techniques.
+          </p>
+        </div>
+        <div style="text-align: center;">
+         <img src="./static/images/lipsync2.png" class="center"  style="width: 80%;"/>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            <b>Comparison of Different Lip Synchronization Methods.</b>
+            We evaluate our model's robustness against three lip synchronization methods. 
+            As shown in Table, performance is highest without manipulation, preserving the embedded watermark. 
+            Although lip synchronization introduces some degradation, speech remains intelligible and scores stay relatively high. 
+            Notably, TLA accuracy consistently exceeds 90%, demonstrating the model’s effectiveness and reliability under adversarial conditions.
+          </p>
+        </div>
+        <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+        <img src="./static/images/qualitative.png" class="center"/>
+        <div class="content has-text-justified">
+          <p>
+            <b>Qualitative Examples</b>
+            The watermarked frames and recovered audio closely resemble the original AVS, ensuring imperceptible embedding and authentic audio recovery.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>lorem-ipsum
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
