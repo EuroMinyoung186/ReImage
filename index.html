@@ -8,304 +8,162 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Robust Image Self-Recovery against Tampering using Watermark Generation with Pixel Shuffling</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+  <!-- CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
 
-    function gtag() {
-      dataLayer.push(arguments);
+  <!-- 🔥 추가된 핵심 스타일 -->
+  <style>
+    .figure-block {
+      margin: 70px 0;
     }
 
-    gtag('js', new Date());
+    .figure-block img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
 
-    gtag('config', 'G-PYVRSFMDRL');
-  </script>
+    .figure-caption {
+      margin-top: 20px;
+    }
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
+    .section {
+      padding-top: 90px;
+      padding-bottom: 90px;
+    }
 
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/favicon.png"> 
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
-  <!-- KaTex -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css">
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: "$$", right: "$$", display: true},
-          {left: "$", right: "$", display: false}
-        ]
-      });
-    });
-  </script>
-  <!-- KaTex -->
+    .title {
+      margin-bottom: 40px;
+    }
+  </style>
 </head>
+
 <body>
-
-<nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-</nav>
-
 
 <section class="hero">
   <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Robust Image Self-Recovery against Tampering using Watermark Generation with Pixel Shuffling</h1>
-          <div class="is-size-3 publication-authors">
-            <img src="./static/images/cvpr_logo.png" alt="CVPR Findings 2026" style="height: 100px; vertical-align: middle;">
-            <b>CVPR Findings 2026</b>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><a href="https://github.com/EuroMinyoung186">Minyoung Kim</a><sup>1</sup>,</span>
-            <span class="author-block">
-              <a href="https://phseo.github.io/">Paul Hongsuck Seo</a><sup>1</sup>,</span>
-          </div>
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Korea University,</span>
-          </div>
-          <div style="display: flex; justify-content: center; align-items: center;">
-            <a href="https://www.korea.edu/sites/en/index.do" target="_blank">
-              <img src="./static/images/korea_university.png" alt="korea" style="height: 36px;">&nbsp;&nbsp;&nbsp;
-            </a>
-            <a href="https://miil.korea.ac.kr/" target="_blank">
-              <img src="./static/images/MIIL_full_logo.svg" alt="miil" style="height: 36px;">&nbsp;&nbsp;&nbsp;
-            </a>
-          </div>
+    <div class="container is-max-desktop has-text-centered">
 
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2511.22936"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <!-- <span class="link-block">
-                <a href="https://arxiv.org/abs/2502.06139"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> -->
-              <span class="link-block">
-                <a href="https://github.com/EuroMinyoung186/ReImage/tree/main"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
+      <h1 class="title is-1">Robust Image Self-Recovery against Tampering using Watermark Generation with Pixel Shuffling</h1>
+
+      <div style="margin-bottom: 20px;">
+        <img src="./static/images/cvpr_logo.png" style="height: 100px;">
+        <br>
+        <b>CVPR Findings 2026</b>
       </div>
+
+      <div class="is-size-5">
+        Minyoung Kim, Paul Hongsuck Seo
+      </div>
+
+      <div class="is-size-5" style="margin-top: 10px;">
+        Korea University
+      </div>
+
+      <div style="margin-top: 15px;">
+        <img src="./static/images/korea_university.png" style="height: 36px;">
+        <img src="./static/images/MIIL_full_logo.svg" style="height: 36px;">
+      </div>
+
     </div>
   </div>
 </section>
 
+<!-- Abstract -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            The rapid growth of Artificial Intelligence-Generated Content (AIGC) raises concerns about the authenticity of digital media. 
-            In this context, image self-recovery, reconstructing original content from its manipulated version, offers a practical solution for understanding the attacker's intent and restoring trustworthy data. 
-            However, existing methods often fail to accurately recover tampered regions, falling short of the primary goal of self-recovery. 
-            To address this challenge, we propose ReImage, a neural watermarking-based self-recovery framework that embeds a shuffled version of the target image into itself as a watermark. 
-            We design a generator that produces watermarks optimized for neural watermarking and introduce an image enhancement module to refine the recovered image. 
-            We further analyze and resolve key limitations of shuffled watermarking, enabling its effective use in self-recovery. 
-            We demonstrate that ReImage achieves state-of-the-art performance across diverse tampering scenarios, consistently producing high-quality recovered images. 
-            The code and pretrained models will be released upon publication.
-          </p>
-        </div>
-      </div>
+
+    <h2 class="title is-3 has-text-centered">Abstract</h2>
+
+    <div class="content has-text-justified">
+      <p>
+        The rapid growth of Artificial Intelligence-Generated Content (AIGC) raises concerns...
+      </p>
     </div>
-    <!--/ Abstract. -->
+
   </div>
 </section>
 
+<!-- Methods -->
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Method -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <div class="content has-text-justified">
-          <p>
-            <b>Overview of ReImage</b>
-            Recent advancements in generative AI have simplified the creation of hyper-realistic forged media, posing significant risks to societal trust and information integrity. 
-            To address this, we propose ReImage, a novel self-recovery framework based on neural watermarking that reconstructs the original content from its tampered version. 
-            Unlike traditional methods that only localize alterations, ReImage embeds a shuffled version of the original image into itself, ensuring that recovery data remains intact even if specific regions are corrupted. 
-            We successfully overcome the technical challenge where increased high-frequency components from shuffling typically degrade extraction accuracy in neural networks. 
-            The framework integrates a specialized watermark generator and an image enhancement module to restore fine-grained structural and semantic details that previous models often lost. 
-            Consequently, ReImage achieves state-of-the-art performance across diverse tampering scenarios, providing high-fidelity restorations suitable for professional and legal applications.
-          </p>
-        </div>
+
+    <h2 class="title is-3 has-text-centered">Methods</h2>
+
+    <div class="figure-block">
+      <img src="./static/images/figure_baseline.png">
+      <div class="content has-text-justified figure-caption">
+        <p><b>Overall architecture of the proposed methods</b> ...</p>
       </div>
     </div>
 
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Methods</h2>
-        <div style="text-align: center;">
-          <img src="./static/images/figure_baseline.png" class="center"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b>Overall architecture of the proposed methods</b>
-            In our framework, given a target image <span class="highlight">I<sub>org</sub></span>, module (a) generates a secret image <span class="highlight">I<sub>sec</sub></span> optimized for watermarking. 
-            The image is shuffled to obtain <span class="highlight">S(I<sub>sec</sub>)</span>, which is then embedded into the cover image <span class="highlight">I<sub>cov</sub></span>—identical to <span class="highlight">I<sub>org</sub></span>—via module (b), yielding the container image <span class="highlight">I<sub>con</sub></span>. 
-            An attacker may generate a tampered image using an AI tool, resulting in the attacked image <span class="highlight">I<sub>att</sub></span>. 
-            During image self-recovery, <span class="highlight">Noise Estimator</span> predicts the discarded noise component <span class="highlight">Î<sub>noise</sub></span>, which is used in module (c) to recover the shuffled secret image <span class="highlight">S(Î<sub>sec</sub>)</span> from <span class="highlight">I<sub>att</sub></span>. 
-            This image is then unshuffled to obtain <span class="highlight">Î<sub>sec</sub></span> and passed through module (d) to reconstruct the target image <span class="highlight">Î<sub>org</sub></span>. 
-            Module (e) refines <span class="highlight">Î<sub>org</sub></span> using contextual information, producing an enhanced recovered image <span class="highlight">Î<sub>enh</sub></span>. 
-            Finally, module (f) locates tampered regions and restores them using corresponding untampered areas from <span class="highlight">I<sub>att</sub></span>, yielding <span class="highlight">Î<sub>rec</sub></span>.
-          </p>
-        </div>
-
-        <div style="text-align: center;">
-          <img src="./static/images/effect_of_pixel_shuffling.png" class="center"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b>Effects of Pixel Shuffling. </b>
-            (a) Visualization of pixel-shuffled images with different grid configurations, defining how the image is divided into equally sized patches: 
-            finer grids introduce higher variance between neighboring pixels, indicating increased highfrequency content. 
-            (b) Magnitude spectra of the images in (a), obtained via FFT: a brighter center indicates dominant low-frequency content, suggesting a smoother image. 
-            As the patch size decreases, spectral energy spreads outward, indicating an increase in highfrequency components. 
-            (c) PSNR of container and recovered images under varying the grid configurations: both degrade significantly as the grid becomes finer, due to the increased high-frequency component.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Results</h2>
-        <!--<embed src="./static/pdf/result1.pdf" type="./static/images/result1.pdf" width="100%" height="600px"/> -->
-        <div style="text-align: center;">
-          <img src="./static/images/table_component.png" class="center" />
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b>Impact of Core Components in ReImage. </b>
-            “PS”, “IE” and “WG” indicate Pixel Shuffling, Image Enhancement module and
-            Watermark Generator, respectively. Using all components yields the best performance in terms of the visual quality of both container and
-            recovered images. M-PSNR denotes the PSNR of the recovered image computed only over the tampered regions.
-          </p>
-        </div>
-        <div style="text-align: center;">
-         <img src="./static/images/table_baseline.png" class="center"  style="width: 80%;"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b>Comparison of Different Self-Recovery Methods on valAGE-Set.</b>
-             Tampering is simulated using three methods: SD Inpaint [25], SDXL [24], and splicing following [12]. To evaluate the visual quality of the recovered and container images, we use PSNR, SSIM, and LPIPS. † We retrained W-RAE with common degradations to ensure fair comparisons, as the original model, which was trained without them, exhibited poorer recovery performance.
-          </p>
-        </div>
-        <div style="text-align: center;">
-         <img src="./static/images/table_robustness.png" class="center"  style="width: 80%;"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b>Comparison of Self-Recovery Performance under Various Common Degradations</b>
-            We evaluate robustness of models by measuring the quality of recovered images under six common degradation types: Gaussian Noise (G.N.), JPEG Compression (JPEG),
-            Gaussian Filter (G.F.), Median Filter (M.F.), Poisson Noise (P.N.), Hue Adjustment, Brightness Adjustment and Contrast Adjustment,
-            along with “Clean” where no degradation is applied. Note that † indicates models retrained with these degradations
-          </p>
-        </div>
-        <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
-        <div style="text-align: center;">
-         <img src="./static/images/table_robustness.png" class="center"  style="width: 80%;"/>
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b>Qualitative Results of Different Self-Recovery Methods</b>
-           Visual tampering is simulated as outlined in Tab. 2. We compare our method with Imuge, Imuge+, and W-RAE†, showing that our approach yields clearer and more complete restorations.
-          </p>
-        </div>
-        <div style="text-align: center;">
-          <img src="./static/images/figure_robustness1.png" style="width: 45%; display: inline-block;" />
-          <img src="./static/images/figure_robustness2.png" style="width: 45%; display: inline-block;" />
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            <b> Qualitative Results under Various Common Degradation Types</b>
-            We qualitatively evaluate the robustness of ReImage under eight common degradation types—Gaussian Noise (G.N.), JPEG Compression (JPEG), Gaussian Filter (G.F.), Median Filter (M.F.), Poisson Noise (P.N.), Hue Adjustment, Brightness Adjustment and Contrast Adjustment.
-          </p>
-        </div>
+    <div class="figure-block">
+      <img src="./static/images/effect_of_pixel_shuffling.png">
+      <div class="content has-text-justified figure-caption">
+        <p><b>Effects of Pixel Shuffling.</b> ...</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>lorem-ipsum
-</code></pre>
+<!-- Results -->
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-3 has-text-centered">Results</h2>
+
+    <div class="figure-block">
+      <img src="./static/images/table_component.png">
+      <div class="content has-text-justified figure-caption">
+        <p><b>Impact of Core Components in ReImage.</b> ...</p>
+      </div>
+    </div>
+
+    <div class="figure-block">
+      <img src="./static/images/table_baseline.png" style="width: 80%;">
+      <div class="content has-text-justified figure-caption">
+        <p><b>Comparison of Different Methods.</b> ...</p>
+      </div>
+    </div>
+
+    <div class="figure-block">
+      <img src="./static/images/table_robustness.png" style="width: 80%;">
+      <div class="content has-text-justified figure-caption">
+        <p><b>Robustness Evaluation.</b> ...</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
+<!-- Qualitative -->
+<section class="section">
+  <div class="container is-max-desktop">
 
-<footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
-          </p>
-        </div>
+    <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
+
+    <div class="figure-block">
+      <img src="./static/images/figure_baseline.png" style="width: 80%;">
+      <div class="content has-text-justified figure-caption">
+        <p><b>Qualitative Results of Different Methods</b> ...</p>
       </div>
     </div>
+
+    <div class="figure-block">
+      <div style="display: flex; justify-content: center; gap: 20px;">
+        <img src="./static/images/figure_robustness1.png" style="width: 45%;">
+        <img src="./static/images/figure_robustness2.png" style="width: 45%;">
+      </div>
+      <div class="content has-text-justified figure-caption">
+        <p><b>Robustness under Degradation</b> ...</p>
+      </div>
+    </div>
+
   </div>
-</footer>
+</section>
 
 </body>
 </html>
