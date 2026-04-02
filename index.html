@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries">
-  <meta name="keywords" content="Synthesized Audiovisual Forgeries, Authentic Audio Recovery, Tamper Localization in Audio">
+        content="Robust Image Self-Recovery against Tampering using Watermark Generation with Pixel Shuffling">
+  <meta name="keywords" content="Image Self-Recovery, Robust Image Watermarking">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</title>
+  <title>Robust Image Self-Recovery against Tampering using Watermark Generation with Pixel Shuffling</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -74,21 +74,18 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Cross-Modal Watermarking for Authentic Audio Recovery and Tamper Localization in Synthesized Audiovisual Forgeries</h1>
+          <h1 class="title is-1 publication-title">Robust Image Self-Recovery against Tampering using Watermark Generation with Pixel Shuffling</h1>
           <div class="is-size-3 publication-authors">
-            <img src="./static/images/Interspeech_logo2.jpg" alt="Interspeech Logo" style="height: 100px; vertical-align: middle;">
-            <b>Interspeech 2025</b>
+            <img src="./static/images/cvpr_logo.png" alt="CVPR Findings 2026" style="height: 100px; vertical-align: middle;">
+            <b>CVPR Findings 2026</b>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><a href="https://github.com/EuroMinyoung186">Minyoung Kim</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="">Sehwan Park</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://sites.google.com/view/sungmin-cha/">Sungmin Cha</a><sup>2</sup>,</span>
             <span class="author-block">
               <a href="https://phseo.github.io/">Paul Hongsuck Seo</a><sup>1</sup>,</span>
           </div>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup>Korea University,</span>
-            <span class="author-block"><sup>2</sup>New York University</span>
           </div>
           <div style="display: flex; justify-content: center; align-items: center;">
             <a href="https://www.korea.edu/sites/en/index.do" target="_blank">
@@ -97,16 +94,13 @@
             <a href="https://miil.korea.ac.kr/" target="_blank">
               <img src="./static/images/MIIL_full_logo.svg" alt="miil" style="height: 36px;">&nbsp;&nbsp;&nbsp;
             </a>
-            <a href="https://www.nyu.edu/" target="_blank">
-              <img src="./static/images/newyork.png" alt="newyork" style="height: 36px;">&nbsp;&nbsp;&nbsp;
-            </a>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org/abs/2507.12723"
+                <a href="https://arxiv.org/abs/2511.22936"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -124,7 +118,7 @@
                 </a>
               </span> -->
               <span class="link-block">
-                <a href="https://github.com/EuroMinyoung186/CMW_SAVF/tree/main"
+                <a href="https://github.com/EuroMinyoung186/ReImage/tree/main"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -150,13 +144,14 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Recent advances in voice cloning and lip synchronization models have enabled Synthesized Audiovisual Forgeries (SAVFs), where both audio and visuals are manipulated to mimic a target speaker. 
-            This significantly increases the risk of misinformation by making fake content seem real. 
-            To address this issue, existing methods detect or localize manipulations but cannot recover the authentic audio that conveys the semantic content of the message.
-            This limitation reduces their effectiveness in combating audiovisual misinformation. 
-            In this work, we introduce the task of Authentic Audio Recovery (AAR) and Tamper Localization in Audio (TLA) from SAVFs and propose a cross-modal watermarking framework to embed authentic audio into visuals before manipulation. 
-            This enables AAR, TLA, and a robust defense against misinformation.
-            Extensive experiments demonstrate the strong performance of our method in AAR and TLA against various manipulations, including voice cloning and lip synchronization.
+            The rapid growth of Artificial Intelligence-Generated Content (AIGC) raises concerns about the authenticity of digital media. 
+            In this context, image self-recovery, reconstructing original content from its manipulated version, offers a practical solution for understanding the attacker's intent and restoring trustworthy data. 
+            However, existing methods often fail to accurately recover tampered regions, falling short of the primary goal of self-recovery. 
+            To address this challenge, we propose ReImage, a neural watermarking-based self-recovery framework that embeds a shuffled version of the target image into itself as a watermark. 
+            We design a generator that produces watermarks optimized for neural watermarking and introduce an image enhancement module to refine the recovered image. 
+            We further analyze and resolve key limitations of shuffled watermarking, enabling its effective use in self-recovery. 
+            We demonstrate that ReImage achieves state-of-the-art performance across diverse tampering scenarios, consistently producing high-quality recovered images. 
+            The code and pretrained models will be released upon publication.
           </p>
         </div>
       </div>
@@ -170,35 +165,50 @@
     <!-- Method -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3 has-text-centered">Method</h2>
-        <img src="./static/images/arch_interspeech.png" class="center"/>
         <div class="content has-text-justified">
           <p>
-            <b>Overview of Our Models</b>
-            The framework comprises three main processes: cross-modal watermarking (CMW), authentic audio recovery, and tamper localization. 
-            In the CMW process, CMW embed the authentic audio within a visual frame. 
-            For authentic audio recovery, noise estimators predict the transformed audio output from watermarked visual frame, enabling the inverse CMW to recover the authentic audio embedded in the visual frame.
-            Finally, in tamper localization, we compute feature maps for both the recovered and tampered audio to generate a score that identifies the tampered regions.
+            <b>Overview of ReImage</b>
+            Recent advancements in generative AI have simplified the creation of hyper-realistic forged media, posing significant risks to societal trust and information integrity. 
+            To address this, we propose ReImage, a novel self-recovery framework based on neural watermarking that reconstructs the original content from its tampered version. 
+            Unlike traditional methods that only localize alterations, ReImage embeds a shuffled version of the original image into itself, ensuring that recovery data remains intact even if specific regions are corrupted. 
+            We successfully overcome the technical challenge where increased high-frequency components from shuffling typically degrade extraction accuracy in neural networks. 
+            The framework integrates a specialized watermark generator and an image enhancement module to restore fine-grained structural and semantic details that previous models often lost. 
+            Consequently, ReImage achieves state-of-the-art performance across diverse tampering scenarios, providing high-fidelity restorations suitable for professional and legal applications.
           </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Methods</h2>
+        <div style="text-align: center;">
+          <img src="./static/images/figure_baseline.png" class="center"/>
+        </div>
+        <div class="content has-text-justified">
           <p>
-            In this work, we aim to recover authentic audio and localize temporally tampered regions in Synthesized Audiovisual Forgeries (SAVFs), which are generated via voice cloning and lip synchronization. 
-            Specifically, our objectives are: (1) to reconstruct the original audio from tampered AVS inputs and (2) to detect time intervals ${(t^i_\mathrm{start}, t^i_\mathrm{end})}_{i=1}^N$ corresponding to manipulated audio segments.
-            To address the tasks of AAR and TLA, we propose a watermarking-based approach as follows: 
-            Given an original AVS $X_\text{org} = (I_\text{org}, A_\text{org})$, we imperceptibly embed the authentic audio $A_\text{org}$ into the visual frame $I_\text{org}$ to produce a watermarked AVS $X_\text{wm} = (I_\text{wm}, A_\text{org})$.
-            After potential tampering (e.g., lip synchronization or voice cloning), we obtain $X_\text{tam} = (I_\text{tam}, A_\text{tam})$. 
-            For Authentic Audio Recovery (AAR) and Tamper Localization in Audio (TLA), our method reconstructs $A_\text{rec}$ from $I_\text{tam}$ and compares it with $A_\text{tam}$ to identify manipulated regions.
+            <b>Overall architecture of the proposed methods</b>
+            In our framework, given a target image <span class="highlight">I<sub>org</sub></span>, module (a) generates a secret image <span class="highlight">I<sub>sec</sub></span> optimized for watermarking. 
+            The image is shuffled to obtain <span class="highlight">S(I<sub>sec</sub>)</span>, which is then embedded into the cover image <span class="highlight">I<sub>cov</sub></span>—identical to <span class="highlight">I<sub>org</sub></span>—via module (b), yielding the container image <span class="highlight">I<sub>con</sub></span>. 
+            An attacker may generate a tampered image using an AI tool, resulting in the attacked image <span class="highlight">I<sub>att</sub></span>. 
+            During image self-recovery, <span class="highlight">Noise Estimator</span> predicts the discarded noise component <span class="highlight">Î<sub>noise</sub></span>, which is used in module (c) to recover the shuffled secret image <span class="highlight">S(Î<sub>sec</sub>)</span> from <span class="highlight">I<sub>att</sub></span>. 
+            This image is then unshuffled to obtain <span class="highlight">Î<sub>sec</sub></span> and passed through module (d) to reconstruct the target image <span class="highlight">Î<sub>org</sub></span>. 
+            Module (e) refines <span class="highlight">Î<sub>org</sub></span> using contextual information, producing an enhanced recovered image <span class="highlight">Î<sub>enh</sub></span>. 
+            Finally, module (f) locates tampered regions and restores them using corresponding untampered areas from <span class="highlight">I<sub>att</sub></span>, yielding <span class="highlight">Î<sub>rec</sub></span>.
           </p>
-<!--           <img src="./static/images/pseudoGT.png" class="center"/> -->
+        </div>
+
+        <div style="text-align: center;">
+          <img src="./static/images/effect_of_pixel_shuffling.png" class="center"/>
+        </div>
+        <div class="content has-text-justified">
           <p>
-            For the watermarking process, we employ Cross-Modal Watermarking (CMW), which consists of a series of Invertible Neural Network (INN) blocks. 
-            INNs have the distinctive property of reversibility, allowing the original inputs to be exactly recovered from their outputs. 
-            Specifically, given an original visual frame and its corresponding audio, CMW embeds the audio into the visual domain by transforming both modalities through a stack of INN blocks. 
-            This process produces a watermarked visual that imperceptibly carries the audio information. 
-            Crucially, the reversible nature of INNs enables us to later recover the embedded audio from the (potentially tampered) visual input, thereby supporting Authentic Audio Recovery (AAR).
-            After performing AAR, we localize tampered regions by comparing the recovered and tampered audio in a semantic feature space. 
-            Instead of directly comparing raw audio signals, which are sensitive to noise and recovery artifacts, we extract high-level audio features and compute cosine similarity at each timestep. 
-            This feature-level comparison enables robust and precise tamper localization by focusing on semantic differences rather than low-level signal variations.
-<!--             Furthermore, relevance alone does not guarantee that a document contains sufficient information to answer the question, as it may still lack consistency with the correct answer. -->
+            <b>Effects of Pixel Shuffling. </b>
+            (a) Visualization of pixel-shuffled images with different grid configurations, defining how the image is divided into equally sized patches: 
+            finer grids introduce higher variance between neighboring pixels, indicating increased highfrequency content. 
+            (b) Magnitude spectra of the images in (a), obtained via FFT: a brighter center indicates dominant low-frequency content, suggesting a smoother image. 
+            As the patch size decreases, spectral energy spreads outward, indicating an increase in highfrequency components. 
+            (c) PSNR of container and recovered images under varying the grid configurations: both degrade significantly as the grid becomes finer, due to the increased high-frequency component.
           </p>
         </div>
       </div>
@@ -209,34 +219,46 @@
         <h2 class="title is-3 has-text-centered">Results</h2>
         <!--<embed src="./static/pdf/result1.pdf" type="./static/images/result1.pdf" width="100%" height="600px"/> -->
         <div style="text-align: center;">
-          <img src="./static/images/audiolocalization.png" class="center" />
+          <img src="./static/images/table_component.png" class="center" />
         </div>
         <div class="content has-text-justified">
           <p>
-            <b>Comparison of Different Audio Tamper Localization Methods on the HDTF Dataset.</b>
-            Tampering simulation uses two methods: AS-inserting a different audio segment into the parts of original audio and VS-modifying parts of the audio with voice generated by voice cloning model. 
-            Localization metrics include IoU, AP, and AUC, while SNR and PESQ measure recovered audio quality, respectively.
-            SSIM and PSNR measure video quality. WM and CM refer to watermarking and cross-modal techniques.
+            <b>Impact of Core Components in ReImage. </b>
+            “PS”, “IE” and “WG” indicate Pixel Shuffling, Image Enhancement module and
+            Watermark Generator, respectively. Using all components yields the best performance in terms of the visual quality of both container and
+            recovered images. M-PSNR denotes the PSNR of the recovered image computed only over the tampered regions.
           </p>
         </div>
         <div style="text-align: center;">
-         <img src="./static/images/lipsync2.png" class="center"  style="width: 80%;"/>
+         <img src="./static/images/table_baseline.png" class="center"  style="width: 80%;"/>
         </div>
         <div class="content has-text-justified">
           <p>
-            <b>Comparison of Different Lip Synchronization Methods.</b>
-            We evaluate our model's robustness against three lip synchronization methods. 
-            As shown in Table, performance is highest without manipulation, preserving the embedded watermark. 
-            Although lip synchronization introduces some degradation, speech remains intelligible and scores stay relatively high. 
-            Notably, TLA accuracy consistently exceeds 90%, demonstrating the model’s effectiveness and reliability under adversarial conditions.
+            <b>Comparison of Different Self-Recovery Methods on valAGE-Set.</b>
+             Tampering is simulated using three methods: SD Inpaint [25], SDXL [24], and splicing following [12]. To evaluate the visual quality of the recovered and container images, we use PSNR, SSIM, and LPIPS. † We retrained W-RAE with common degradations to ensure fair comparisons, as the original model, which was trained without them, exhibited poorer recovery performance.
+          </p>
+        </div>
+        <div style="text-align: center;">
+         <img src="./static/images/table_robustness.png" class="center"  style="width: 80%;"/>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            <b>Comparison of Self-Recovery Performance under Various Common Degradations</b>
+            We evaluate robustness of models by measuring the quality of recovered images under six common degradation types: Gaussian Noise (G.N.), JPEG Compression (JPEG),
+            Gaussian Filter (G.F.), Median Filter (M.F.), Poisson Noise (P.N.), Hue Adjustment, Brightness Adjustment and Contrast Adjustment,
+            along with “Clean” where no degradation is applied. Note that † indicates models retrained with these degradations
           </p>
         </div>
         <h2 class="title is-3 has-text-centered">Qualitative Results</h2>
-        <img src="./static/images/qualitative.png" class="center"/>
+        <div style="text-align: center;">
+          <img src="./static/images/figure_robustness1.png" style="width: 45%; display: inline-block;" />
+          <img src="./static/images/figure_robustness2.png" style="width: 45%; display: inline-block;" />
+        </div>
         <div class="content has-text-justified">
           <p>
-            <b>Qualitative Examples</b>
-            The watermarked frames and recovered audio closely resemble the original AVS, ensuring imperceptible embedding and authentic audio recovery.
+            <b> Qualitative Results of Different Self-Recovery Methods. </b>
+            Visual tampering is simulated as outlined in Tab. 2. We compare our method with Imuge, Imuge+, and W-RAE†
+            , showing that our approach yields clearer and more complete restorations.
           </p>
         </div>
       </div>
