@@ -30,8 +30,8 @@
     }
 
     .section {
-      padding-top: 60px;
-      padding-bottom: 60px;
+      padding-top: 30px;
+      padding-bottom: 30px;
     }
 
     .title {
@@ -106,12 +106,13 @@
       <img src="./static/images/figure_baseline.png">
       <div class="content has-text-justified figure-caption">
         <p><b>Overall architecture of the proposed methods</b>
-        Recent advancements in generative AI have simplified the creation of hyper-realistic forged media, posing significant risks to societal trust and information integrity. 
-            To address this, we propose ReImage, a novel self-recovery framework based on neural watermarking that reconstructs the original content from its tampered version. 
-            Unlike traditional methods that only localize alterations, ReImage embeds a shuffled version of the original image into itself, ensuring that recovery data remains intact even if specific regions are corrupted. 
-            We successfully overcome the technical challenge where increased high-frequency components from shuffling typically degrade extraction accuracy in neural networks. 
-            The framework integrates a specialized watermark generator and an image enhancement module to restore fine-grained structural and semantic details that previous models often lost. 
-            Consequently, ReImage achieves state-of-the-art performance across diverse tampering scenarios, providing high-fidelity restorations suitable for professional and legal applications.</p>
+        In our framework, given a target image <span class="highlight">I<sub>org</sub></span>, module (a) generates a secret image <span class="highlight">I<sub>sec</sub></span> optimized for watermarking. 
+            The image is shuffled to obtain <span class="highlight">S(I<sub>sec</sub>)</span>, which is then embedded into the cover image <span class="highlight">I<sub>cov</sub></span>—identical to <span class="highlight">I<sub>org</sub></span>—via module (b), yielding the container image <span class="highlight">I<sub>con</sub></span>. 
+            An attacker may generate a tampered image using an AI tool, resulting in the attacked image <span class="highlight">I<sub>att</sub></span>. 
+            During image self-recovery, <span class="highlight">Noise Estimator</span> predicts the discarded noise component <span class="highlight">Î<sub>noise</sub></span>, which is used in module (c) to recover the shuffled secret image <span class="highlight">S(Î<sub>sec</sub>)</span> from <span class="highlight">I<sub>att</sub></span>. 
+            This image is then unshuffled to obtain <span class="highlight">Î<sub>sec</sub></span> and passed through module (d) to reconstruct the target image <span class="highlight">Î<sub>org</sub></span>. 
+            Module (e) refines <span class="highlight">Î<sub>org</sub></span> using contextual information, producing an enhanced recovered image <span class="highlight">Î<sub>enh</sub></span>. 
+            Finally, module (f) locates tampered regions and restores them using corresponding untampered areas from <span class="highlight">I<sub>att</sub></span>, yielding <span class="highlight">Î<sub>rec</sub>.</p>
       </div>
     </div>
 
@@ -141,9 +142,11 @@
     <div class="figure-block">
       <img src="./static/images/table_component.png" style="width: 80%;">
       <div class="content has-text-justified figure-caption">
-        <p><b>Impact of Core Components in ReImage.</b>“PS”, “IE” and “WG” indicate Pixel Shuffling, Image Enhancement module and
-            Watermark Generator, respectively. Using all components yields the best performance in terms of the visual quality of both container and
-            recovered images. M-PSNR denotes the PSNR of the recovered image computed only over the tampered regions.</p>
+        <p><b>Impact of Core Components in ReImage.</b>(a) Visualization of pixel-shuffled images with different grid configurations, defining how the image is divided into equally sized patches: 
+            finer grids introduce higher variance between neighboring pixels, indicating increased highfrequency content. 
+            (b) Magnitude spectra of the images in (a), obtained via FFT: a brighter center indicates dominant low-frequency content, suggesting a smoother image. 
+            As the patch size decreases, spectral energy spreads outward, indicating an increase in highfrequency components. 
+            (c) PSNR of container and recovered images under varying the grid configurations: both degrade significantly as the grid becomes finer, due to the increased high-frequency component</p>
       </div>
     </div>
 
