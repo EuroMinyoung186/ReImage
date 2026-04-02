@@ -51,7 +51,7 @@
       <div style="margin-bottom: 20px;">
         <img src="./static/images/cvpr_logo.png" style="height: 100px;">
         <br>
-        <b>CVPR Findings 2026</b>
+        <b><span style="font-size: 1.5em;">CVPR Findings 2026</span></b>
       </div>
 
       <div class="is-size-5">
@@ -138,18 +138,16 @@
     <div class="figure-block">
       <img src="./static/images/table_component.png" style="width: 80%;">
       <div class="content has-text-justified figure-caption">
-        <p><b>Impact of Core Components in ReImage.</b> ...</p>
+        <p><b>Impact of Core Components in ReImage.</b>“PS”, “IE” and “WG” indicate Pixel Shuffling, Image Enhancement module and
+            Watermark Generator, respectively. Using all components yields the best performance in terms of the visual quality of both container and
+            recovered images. M-PSNR denotes the PSNR of the recovered image computed only over the tampered regions.</p>
       </div>
     </div>
 
     <div class="figure-block">
       <img src="./static/images/table_baseline.png" style="width: 80%;">
       <div class="content has-text-justified figure-caption">
-        <p><b>Comparison of Different Methods.</b>(a) Visualization of pixel-shuffled images with different grid configurations, defining how the image is divided into equally sized patches: 
-            finer grids introduce higher variance between neighboring pixels, indicating increased highfrequency content. 
-            (b) Magnitude spectra of the images in (a), obtained via FFT: a brighter center indicates dominant low-frequency content, suggesting a smoother image. 
-            As the patch size decreases, spectral energy spreads outward, indicating an increase in highfrequency components. 
-            (c) PSNR of container and recovered images under varying the grid configurations: both degrade significantly as the grid becomes finer, due to the increased high-frequency component.</p>
+        <p><b>Comparison of Different Methods.</b>Tampering is simulated using three methods: SD Inpaint [25], SDXL [24], and splicing following [12]. To evaluate the visual quality of the recovered and container images, we use PSNR, SSIM, and LPIPS. † We retrained W-RAE with common degradations to ensure fair comparisons, as the original model, which was trained without them, exhibited poorer recovery performance.</p>
       </div>
     </div>
 
@@ -190,6 +188,29 @@
 
   </div>
 </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
