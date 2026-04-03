@@ -70,6 +70,40 @@
         <img src="./static/images/MIIL_full_logo.svg" style="height: 36px;">
       </div>
 
+      <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2511.22936"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/2502.06139"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://github.com/EuroMinyoung186/ReImage/tree/main"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+                </a>
+              </span>
+            </div>
+          </div>
     </div>
   </div>
 </section>
@@ -105,8 +139,7 @@
     <div class="figure-block">
       <img src="./static/images/reimage_arch.png">
       <div class="content has-text-justified figure-caption">
-        <p><b>Overall architecture of the proposed methods</b>
-        In our framework, given a target image <span class="highlight">I<sub>org</sub></span>, module (a) generates a secret image <span class="highlight">I<sub>sec</sub></span> optimized for watermarking. 
+        <p><b>Overall Architecture of the Proposed Methods.</b> In our framework, given a target image <span class="highlight">I<sub>org</sub></span>, module (a) generates a secret image <span class="highlight">I<sub>sec</sub></span> optimized for watermarking. 
             The image is shuffled to obtain <span class="highlight">S(I<sub>sec</sub>)</span>, which is then embedded into the cover image <span class="highlight">I<sub>cov</sub></span>—identical to <span class="highlight">I<sub>org</sub></span>—via module (b), yielding the container image <span class="highlight">I<sub>con</sub></span>. 
             An attacker may generate a tampered image using an AI tool, resulting in the attacked image <span class="highlight">I<sub>att</sub></span>. 
             During image self-recovery, <span class="highlight">Noise Estimator</span> predicts the discarded noise component <span class="highlight">Î<sub>noise</sub></span>, which is used in module (c) to recover the shuffled secret image <span class="highlight">S(Î<sub>sec</sub>)</span> from <span class="highlight">I<sub>att</sub></span>. 
@@ -119,13 +152,11 @@
     <div class="figure-block">
       <img src="./static/images/effect_of_pixel_shuffling.png">
       <div class="content has-text-justified figure-caption">
-        <p><b>Effects of Pixel Shuffling.</b>In our framework, given a target image <span class="highlight">I<sub>org</sub></span>, module (a) generates a secret image <span class="highlight">I<sub>sec</sub></span> optimized for watermarking. 
-            The image is shuffled to obtain <span class="highlight">S(I<sub>sec</sub>)</span>, which is then embedded into the cover image <span class="highlight">I<sub>cov</sub></span>—identical to <span class="highlight">I<sub>org</sub></span>—via module (b), yielding the container image <span class="highlight">I<sub>con</sub></span>. 
-            An attacker may generate a tampered image using an AI tool, resulting in the attacked image <span class="highlight">I<sub>att</sub></span>. 
-            During image self-recovery, <span class="highlight">Noise Estimator</span> predicts the discarded noise component <span class="highlight">Î<sub>noise</sub></span>, which is used in module (c) to recover the shuffled secret image <span class="highlight">S(Î<sub>sec</sub>)</span> from <span class="highlight">I<sub>att</sub></span>. 
-            This image is then unshuffled to obtain <span class="highlight">Î<sub>sec</sub></span> and passed through module (d) to reconstruct the target image <span class="highlight">Î<sub>org</sub></span>. 
-            Module (e) refines <span class="highlight">Î<sub>org</sub></span> using contextual information, producing an enhanced recovered image <span class="highlight">Î<sub>enh</sub></span>. 
-            Finally, module (f) locates tampered regions and restores them using corresponding untampered areas from <span class="highlight">I<sub>att</sub></span>, yielding <span class="highlight">Î<sub>rec</sub></span>.
+        <p><b>Effects of Pixel Shuffling.</b> (a) Visualization of pixel-shuffled images with different grid configurations, defining how the image is divided into equally sized patches: 
+            finer grids introduce higher variance between neighboring pixels, indicating increased highfrequency content. 
+            (b) Magnitude spectra of the images in (a), obtained via FFT: a brighter center indicates dominant low-frequency content, suggesting a smoother image. 
+            As the patch size decreases, spectral energy spreads outward, indicating an increase in highfrequency components. 
+            (c) PSNR of container and recovered images under varying the grid configurations: both degrade significantly as the grid becomes finer, due to the increased high-frequency component.
 </p>
       </div>
     </div>
@@ -151,14 +182,14 @@
     <div class="figure-block">
       <img src="./static/images/table_baseline.png" style="width: 80%;">
       <div class="content has-text-justified figure-caption">
-        <p><b>Comparison of Different Methods.</b>Tampering is simulated using three methods: SD Inpaint [25], SDXL [24], and splicing following [12]. To evaluate the visual quality of the recovered and container images, we use PSNR, SSIM, and LPIPS. † We retrained W-RAE with common degradations to ensure fair comparisons, as the original model, which was trained without them, exhibited poorer recovery performance.</p>
+        <p><b>Comparison of Different Methods.</b> Tampering is simulated using three methods: SD Inpaint [25], SDXL [24], and splicing following [12]. To evaluate the visual quality of the recovered and container images, we use PSNR, SSIM, and LPIPS. † We retrained W-RAE with common degradations to ensure fair comparisons, as the original model, which was trained without them, exhibited poorer recovery performance.</p>
       </div>
     </div>
 
     <div class="figure-block">
       <img src="./static/images/table_robustness.png" style="width: 80%;">
       <div class="content has-text-justified figure-caption">
-        <p><b>Robustness Evaluation.</b>We evaluate robustness of models by measuring the quality of recovered images under six common degradation types: Gaussian Noise (G.N.), JPEG Compression (JPEG),
+        <p><b>Robustness Evaluation.</b> We evaluate robustness of models by measuring the quality of recovered images under six common degradation types: Gaussian Noise (G.N.), JPEG Compression (JPEG),
             Gaussian Filter (G.F.), Median Filter (M.F.), Poisson Noise (P.N.), Hue Adjustment, Brightness Adjustment and Contrast Adjustment,
             along with “Clean” where no degradation is applied. Note that † indicates models retrained with these degradations</p>
       </div>
@@ -176,7 +207,7 @@
     <div class="figure-block">
       <img src="./static/images/figure_baseline.png" style="width: 80%;">
       <div class="content has-text-justified figure-caption">
-        <p><b>Qualitative Results of Different Methods</b> Visual tampering is simulated as outlined in Tab. 2. We compare our method with Imuge, Imuge+, and W-RAE†, showing that our approach yields clearer and more complete restorations.</p>
+        <p><b>Qualitative Results of Different Methods.</b> Visual tampering is simulated as outlined in Tab. 2. We compare our method with Imuge, Imuge+, and W-RAE†, showing that our approach yields clearer and more complete restorations.</p>
       </div>
     </div>
 
@@ -186,7 +217,7 @@
         <img src="./static/images/figure_robustness2.png" style="width: 45%;">
       </div>
       <div class="content has-text-justified figure-caption">
-        <p><b>Robustness under Degradation</b>We qualitatively evaluate the robustness of ReImage under eight common degradation types—Gaussian Noise (G.N.), JPEG Compression (JPEG), Gaussian Filter (G.F.), Median Filter (M.F.), Poisson Noise (P.N.), Hue Adjustment, Brightness Adjustment and Contrast Adjustment.</p>
+        <p><b>Robustness under Degradation.</b> We qualitatively evaluate the robustness of ReImage under eight common degradation types—Gaussian Noise (G.N.), JPEG Compression (JPEG), Gaussian Filter (G.F.), Median Filter (M.F.), Poisson Noise (P.N.), Hue Adjustment, Brightness Adjustment and Contrast Adjustment.</p>
       </div>
     </div>
 
