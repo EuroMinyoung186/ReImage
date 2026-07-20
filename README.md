@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  by <a href="https://github.com/EuroMinyoung186">Minyoung Kim</a>,
+  by <a href="https://eurominyoung186.github.io">Minyoung Kim</a>,
   <a href="https://phseo.github.io/">Paul Hongsuck Seo</a>
 </p>
 
