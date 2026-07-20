@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pth
+*.state
+wandb/
+experiments/
+results/
+save/
+save_next/
+datalists/
+.gradio/

@@ -1,0 +1,15 @@
+torch==2.2.2
+torchvision==0.17.2
+numpy==1.26.4
+basicsr==1.4.2
+opencv-python
+Pillow
+PyYAML
+lmdb
+scikit-image
+scikit-learn
+einops
+kornia
+lpips
+wandb
+tensorboard

@@ -1,0 +1,186 @@
+#### general settings
+
+name: invertible_pipeline
+
+use_tb_logger: true
+model: MIMO-VRN-h
+distortion: sr
+scale: 4
+gpu_ids: [0]
+gop: 3
+num_video: 1
+moco_m : 0.999
+chunk_size: 500
+message_length: 640
+audio_length: 1
+fps: 25
+
+
+#### datasets
+
+datasets:
+  train:
+    name: Vimeo90K
+    mode: train
+    interval_list: [1]
+    random_reverse: true
+    border_mode: false
+    # Not used at test time; kept for config-format compatibility.
+    txt_path: ./datalists/train.txt
+    audio_sample_rate: 16000
+    hop_length: 200
+    num_video: 1
+
+    fps: 25
+    N_frames: 1
+    use_shuffle: false
+    n_workers: 4  # per GPU
+    batch_size: 8
+    audio_length: 1
+    GT_size: 512
+    LQ_size: 36
+    use_flip: false
+    use_rot: false
+    color: RGB
+
+  val:
+    num_video: 1
+    name: Vid4
+    mode: photoshop
+    # Text files listing absolute paths (one per line):
+    # txt_path: original (cover) images, mask_path: edit-region masks,
+    # temp_path: edited (attacked) versions of the images.
+    txt_path: ./datalists/test_img.txt
+    mask_path: ./datalists/test_mask.txt
+    temp_path: ./datalists/test_edited.txt
+    audio_sample_rate: 16000
+    hop_length: 200
+    fps : 1
+
+    N_frames: 1
+    GT_size: 512
+    LQ_size: 36
+    padding: 'new_info'
+    pred_interval: -1
+    interval_list: [1]
+    random_reverse: false
+
+
+#### network structures
+
+network_G:
+  which_model_G:
+      subnet_type: DBNet
+  in_hi_nc: 12
+  in_ho_nc: 12
+  encoder_in1: 3
+  encoder_in2: 3
+
+  channel: 12
+  out_nc: 12
+  block_num: [6, 6]
+  scale: 2
+  init: xavier_group
+  block_num_rbm: 8
+  attention: gauss
+
+generator:
+
+  encoder:
+    in_channels: 3
+    z_channels: 16
+    resolution: 256  # only used for attn_resolutions
+    out_ch: 3
+    ch: 32
+    ch_mult: [1, 1, 1, 2]
+    num_res_blocks: 2
+    attn_resolutions: []
+    dropout: 0.0
+    double_z: False
+  decoder:
+    in_channels: 3
+    z_channels: 16     # hidden_size + z_channels
+    resolution: 256
+    out_ch: 3
+    ch: 32
+    ch_mult: [1, 1, 1, 2]
+    num_res_blocks: 2
+    attn_resolutions: []
+    dropout: 0.0
+    tanh_out: True
+
+sam_small:
+  depth: 2
+  encoder:
+    img_size: 256
+    embed_dim: 192
+    out_chans: 192
+    depth: 1
+    num_heads: 6
+    patch_size: 4
+    global_attn_indexes: [0]
+    window_size: 8
+    mlp_ratio: 4
+    qkv_bias: True
+    use_rel_pos: True
+    use_softmax: True
+  pixel_decoder:
+    upscale_stages: [2, 2]  # 4*2*2 = x16 (patch size)
+    embed_dim: 192  # = encoder.out_chans
+    nbits: 3
+    sigmoid_output: False
+    upscale_type: 'conv'
+
+
+#### path
+
+path:
+  # resume_state must point to a trained checkpoint state file. The matching
+  # network weights are loaded automatically from
+  # ../experiments/<name>/models/<iter>_G.pth.
+  pretrain_model_G:
+  pretrain_model_M:
+  models: ckp/base
+  strict_load: true
+  resume_state: ../experiments/invertible_pipeline/training_state/200000.state
+  val_images:
+  
+
+
+#### training settings: learning rate scheme, loss
+
+train:
+  type: Adam
+
+  lr_G: !!float 1e-4
+  weight_decay_G: !!float 1e-12
+
+  beta1: 0.9
+  beta2: 0.5
+  niter: 500000
+  warmup_iter: -1  # no warm up
+
+  lr_scheme: MultiStepLR
+  lr_steps: [30000, 60000, 90000, 150000, 180000, 210000]
+  lr_gamma: 0.5
+  schedule: [120, 160]
+  cos: false
+
+  pixel_criterion_forw: l2
+  pixel_criterion_back: l1
+
+  manual_seed: 10
+
+  val_freq: !!float 1000000000 #!!float 5e3
+
+  lambda_fit_forw: 64.
+  lambda_rec_back: 1
+  lambda_center: 0
+  gradient_clipping: 1.
+
+
+#### logger
+
+logger:
+  print_freq: 100
+  save_checkpoint_freq: !!float 5e3
