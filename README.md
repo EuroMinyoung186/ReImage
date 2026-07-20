@@ -57,7 +57,7 @@ Notes:
 
 - **Training**: we train on [COCO 2017](https://cocodataset.org/) (`train2017`). Download it from the official website.
 - **Test (original images & masks)**: we use the tampering benchmark released by [EditGuard](https://github.com/xuanyuzhang21/EditGuard). Download the original images and edit-region masks from [🔗 this link](https://drive.google.com/file/d/1s3HKFOzLokVplXV65Z6xcsBJ9qI91Qfv/view?usp=sharing).
-- **Test (edited images)**: we inpaint the masked regions with Stable Diffusion and SDXL. Download our pre-generated edited sets from [🔗 Google Drive](#), or generate them yourself:
+- **Test (edited images)**: we inpaint the masked regions with Stable Diffusion and SDXL. Download our pre-generated edited sets from [🔗 Google Drive](https://drive.google.com/drive/folders/1vXGYU3vbHK_l7XLUBYiOYopflObzyrHb), or generate them yourself:
 
   ```bash
   pip install diffusers transformers accelerate
