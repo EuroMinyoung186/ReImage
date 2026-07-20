@@ -158,7 +158,7 @@ Average metrics (PSNR / SSIM / LPIPS, mask AUC / IoU / F1, runtime) are printed 
 - Random seed is fixed with `--seed` (default 20).
 
 ## Acknowledgement
-This project includes code from [LF-VSN](https://github.com/ppp23/LF-VSN) and [BasicSR](https://github.com/XPixelGroup/BasicSR).
+This project includes code from [LF-VSN]([https://github.com/ppp23/LF-VSN](https://github.com/MC-E/LF-VSN)) and [BasicSR](https://github.com/XPixelGroup/BasicSR).
 
 ## Citation
 ```BibTeX
